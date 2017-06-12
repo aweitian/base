@@ -29,6 +29,11 @@ class BaseTest extends PHPUnit_Framework_TestCase {
 				"balabala.qq.cc.v" => "g" 
 		], $dot );
 	}
+	public function testForWhere() {
+		$taw = [ ];
+		\Tian\Base\Arr::set ( $taw, '.', 'g' );
+		$this->assertEquals('g',\Tian\Base\Arr::get($taw,'.'));
+	}
 	public function testshuffle() {
 		$taw = [ 
 				1,
