@@ -16,6 +16,8 @@ class Arr {
 	 * @return 路径指向的引用
 	 */
 	public static function &ref(array &$arr, $key, $delimiter = '.') {
+		if (is_null($key))
+			return $arr;
 		$tmp = &$arr;
 		$config = explode ( $delimiter, trim ( $key, $delimiter ) );
 		foreach ( ( array ) $config as $d ) {
