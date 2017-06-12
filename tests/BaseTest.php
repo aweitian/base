@@ -33,6 +33,13 @@ class BaseTest extends PHPUnit_Framework_TestCase {
 		$taw = [ ];
 		\Tian\Base\Arr::set ( $taw, '.', 'g' );
 		$this->assertEquals('g',\Tian\Base\Arr::get($taw,'.'));
+		$c = & \Tian\Base\Arr::ref($taw, null);
+		$c[] = 'bb';
+		$this->assertArraySubset ( [
+				0 => "bb",
+				"" => "g"
+		], $c );
+		
 	}
 	public function testshuffle() {
 		$taw = [ 
