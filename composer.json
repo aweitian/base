@@ -25,7 +25,7 @@
   "autoload": {
     "files": [],
     "psr-4": {
-      "Tian\\": "src/"
+      "Tian\\Base\\": "src/"
     }
   }
 }
