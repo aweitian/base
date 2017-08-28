@@ -7,8 +7,12 @@ class BaseTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testArr() {
 		$taw = [ ];
+//		var_dump('testArr');
+//        \Tian\Base\Arr::ref ( $taw, "/taw/xpath/v",  '/' ,'child');
+//        var_dump($taw);exit;
 		\Tian\Base\Arr::set ( $taw, "/taw/xpath/v", 'ann', '/' );
-		// var_dump($taw);
+//		 var_dump(\Tian\Base\Arr::get ( $taw, "/taw/xpath/v", null, '/' ));
+//		 exit;
 		$this->assertEquals ( "ann", \Tian\Base\Arr::get ( $taw, "/taw/xpath/v", null, '/' ) );
 		$c = & \Tian\Base\Arr::ref ( $taw, "/taw/xpath/v", '/' );
 		$c = "balabala";
@@ -28,6 +32,18 @@ class BaseTest extends PHPUnit_Framework_TestCase {
 				"taw.xpath.vv" => "garri",
 				"balabala.qq.cc.v" => "g" 
 		], $dot );
+	}
+	public function testArrMidator() {
+		$taw = [ ];
+		$midator = 'child';
+//		\Tian\Base\Arr::ref ( $taw, "/taw/xpath/v",  '/' ,'child');
+//		var_dump($taw);exit;
+        \Tian\Base\Arr::set ( $taw, "/taw/xpath/v", 'ann', '/',$midator);
+
+		$this->assertEquals ( "ann", \Tian\Base\Arr::get ( $taw, "/taw/xpath/v", null, '/',$midator ) );
+		$c = & \Tian\Base\Arr::ref ( $taw, "/taw/xpath/v", '/' ,$midator);
+		$c = "balabala";
+		$this->assertEquals ( "balabala", \Tian\Base\Arr::get ( $taw, "/taw/xpath/v", null, '/',$midator ) );
 	}
 	public function testForWhere() {
 		$taw = [ ];
