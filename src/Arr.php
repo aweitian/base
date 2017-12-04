@@ -6,6 +6,8 @@
 
 namespace Tian\Base;
 
+use ArrayAccess;
+
 class Arr
 {
     /**
@@ -15,8 +17,8 @@ class Arr
      * @param array $arr
      * @param string $key
      * @param string $delimiter
-     * @param mixd $midator
-     * @return 路径指向的引用
+     * @param $midator
+     * @return array 路径指向的引用
      */
     public static function &ref(array &$arr, $key, $delimiter = '.', $midator = null)
     {
@@ -54,8 +56,8 @@ class Arr
      * @param string $key
      * @param string $name
      * @param string $delimiter
-     * @param mixd $midator
-     * @return $arr
+     * @param $midator
+     * @return array
      */
     public
     static function set(array &$arr, $key, $name, $delimiter = '.', $midator = null)
@@ -82,6 +84,7 @@ class Arr
      * @param array $arr
      * @param string $key
      * @param string $delimiter
+     * @param null $midator
      * @return bool
      */
     public
@@ -120,7 +123,8 @@ class Arr
      * @param string $key
      * @param string $default
      * @param string $delimiter
-     * @return string|unknown
+     * @param null $midator
+     * @return string
      */
     public
     static function get(array $arr, $key, $default = null, $delimiter = '.', $midator = null)
@@ -183,6 +187,7 @@ class Arr
      *
      * @param array $array
      * @param string $prepend
+     * @param string $delimiter
      * @return array
      */
     public
@@ -204,6 +209,7 @@ class Arr
      *
      * @param array $array
      * @param array|string $keys
+     * @param string $delimiter
      * @return void
      */
     public
@@ -309,12 +315,12 @@ class Arr
 
             if (!is_int($params [1]) && !is_float($params [1]) && !is_string($params [1]) && $params [1] !== null && !(is_object($params [1]) && method_exists($params [1], '__toString'))) {
                 trigger_error('array_column(): The column key should be either a string or an integer', E_USER_WARNING);
-                return false;
+                return null;
             }
 
             if (isset ($params [2]) && !is_int($params [2]) && !is_float($params [2]) && !is_string($params [2]) && !(is_object($params [2]) && method_exists($params [2], '__toString'))) {
                 trigger_error('array_column(): The index key should be either a string or an integer', E_USER_WARNING);
-                return false;
+                return null;
             }
 
             $paramsInput = $params [0];
