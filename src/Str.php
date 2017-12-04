@@ -35,20 +35,22 @@ class Str {
      *
      * @param int $length
      * @return string
-     * @throws \Exception
      */
 	public static function random($length = 16) {
-		$string = '';
-		while ( ($len = strlen ( $string )) < $length ) {
-			$size = $length - $len;
-			$bytes = random_bytes ( $size );
-			$string .= substr ( str_replace ( [ 
-					'/',
-					'+',
-					'=' 
-			], '', base64_encode ( $bytes ) ), 0, $size );
-		}
-		return $string;
+        $string = '';
+
+        while (($len = strlen($string)) < $length) {
+            $size = $length - $len;
+
+            try {
+                $bytes = random_bytes($size);
+            } catch (\Exception $e) {
+            }
+
+            $string .= substr(str_replace(['/', '+', '='], '', base64_encode($bytes)), 0, $size);
+        }
+
+        return $string;
 	}
 	/**
 	 *
